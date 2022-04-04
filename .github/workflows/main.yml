@@ -28,9 +28,6 @@ jobs:
         with:
           java-version: 14
 
-      - name: install maven    
-        run: sudo apt install maven -y
-
       - name: Build with Maven
         run: mvn -B package --file spring-petclinic/pom.xml
 
