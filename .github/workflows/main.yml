@@ -25,12 +25,13 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Update SO
-        run: apt update
+        run: ./mvnw spring-boot:build-image
 
-      # Runs a single command using the runners shell
-      - name: Install java jdk
-        run: apt install openjdk-11-jdk
 
-      # Runs a set of commands using the runners shell
-      - name: Print version java
-        run: echo java -version
+
+
+
+
+
+
+        
