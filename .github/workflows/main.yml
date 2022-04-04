@@ -27,8 +27,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 14
-        
-      - name: install maven
+
+      - name: install maven    
+        run: sudo apt install maven -y
+
+      - name: criando jar
         run: mvn install -DskipTests
 
 
