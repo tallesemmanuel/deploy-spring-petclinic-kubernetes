@@ -20,19 +20,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      - name: Set up JDK 14
-        uses: actions/setup-java@v1
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
         with:
-          java-version: 14
-
-      - name: install maven    
-        run: sudo apt install maven -y
-
-      - name: criando jar
-        run: ./mvnw spring-boot:build-image
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Build with Maven
+        run: mvn --batch-mode --update-snapshots verify
 
 
 
