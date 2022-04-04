@@ -31,7 +31,7 @@ jobs:
         run: sudo apt install openjdk-11-jdk -y
 
       - name: Build image
-        run: ./mvnw spring-boot:build-image
+        run: spring-petclinic/mvnw spring-boot:build-image
 
 
 
