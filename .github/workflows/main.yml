@@ -25,7 +25,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Update SO
-        run: ./mvnw spring-boot:build-image
+        run: apt install maven -y
 
 
 
