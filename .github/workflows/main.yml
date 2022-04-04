@@ -30,6 +30,8 @@ jobs:
       - name: install java jdk
         run: sudo apt install openjdk-11-jdk -y
 
+      - name: Build image
+        run: ./mvnw spring-boot:build-image
 
 
 
