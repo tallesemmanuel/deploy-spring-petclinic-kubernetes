@@ -4,7 +4,7 @@ on:
     branches: [ homolog ]
   workflow_dispatch:
 jobs:
-  build-maven:
+  MAVEN:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -18,7 +18,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
 
-  build-image:
+  PUSH:
     runs-on: ubuntu-latest 
     steps:
       - uses: actions/checkout@v2
