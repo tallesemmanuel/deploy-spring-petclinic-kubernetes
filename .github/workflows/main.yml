@@ -23,7 +23,7 @@ jobs:
 
   PUSH:
     runs-on: ubuntu-latest 
-    needs: MAVEN]
+    needs: [MAVEN]
     steps:
       - uses: actions/checkout@v2
 
