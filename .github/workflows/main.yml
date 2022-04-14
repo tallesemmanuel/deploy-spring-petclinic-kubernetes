@@ -32,11 +32,11 @@ jobs:
         with:
           username: ${{secrets.DOCKERHUB_USER}}
           password: ${{secrets.DOCKERHUB_PWD}}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2.4.0
       - name: ls2
         run: sudo ls
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v2.4.0
+
         with:
           context: .
           file: Dockerfile
