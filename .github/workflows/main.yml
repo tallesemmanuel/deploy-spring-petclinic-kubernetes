@@ -17,11 +17,13 @@ jobs:
     - name: ls
       run: sudo ls
     - name: Build with Maven
-      run: mvnw spring-boot:build-image
+      run: ./mvnw spring-boot:build-image
+    - name: ls2
+      run: sudo ls
 
   PUSH:
     runs-on: ubuntu-latest 
-    needs: [MAVEN]
+    needs: MAVEN]
     steps:
       - uses: actions/checkout@v2
 
