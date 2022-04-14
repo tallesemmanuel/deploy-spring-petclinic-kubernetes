@@ -14,6 +14,8 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
         cache: maven
+    - name: ls
+      run: sudo ls
     - name: Build with Maven
       run: sudo ./mvnw spring-boot:build-image
 
