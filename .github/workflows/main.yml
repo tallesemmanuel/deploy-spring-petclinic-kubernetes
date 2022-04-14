@@ -9,6 +9,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
+      run: apt update
+    - name: Set up JDK 11
       run: apt install openjdk-17-jdk -y
     - name: Build with Maven
       run: ./mvnw spring-boot:build-image
