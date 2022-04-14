@@ -37,7 +37,11 @@ jobs:
       - name: ls2
         run: sudo ls
       - name: build
-        run: docker build -t tallesalencar/petclinic:latest
+        run: docker build -t tallesalencar/petclinic:${{github.run_number}} .
+      - name: tag
+        run: docker tag tallesalencar/petclinic:${{github.run_number}} tallesalencar/petclinic:latest
+      - name: push
+        run: docker push tallesalencar/petclinic:${{github.run_number}}
       - name: push
         run: docker push tallesalencar/petclinic:latest
                 
