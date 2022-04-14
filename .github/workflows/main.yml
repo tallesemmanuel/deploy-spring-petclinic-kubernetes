@@ -20,6 +20,8 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: ls2
       run: sudo ls
+    - name: ls2
+      run: sudo ls target
 
   PUSH:
     runs-on: ubuntu-latest 
