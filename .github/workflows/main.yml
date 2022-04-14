@@ -17,7 +17,7 @@ jobs:
     - name: ls
       run: sudo ls
     - name: Build with Maven
-      run: sudo ./mvnw spring-boot:build-image
+      run: mvnw spring-boot:build-image
 
   PUSH:
     runs-on: ubuntu-latest 
