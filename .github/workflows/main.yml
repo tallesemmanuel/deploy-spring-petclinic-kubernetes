@@ -15,8 +15,7 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Build with Maven
-      run: ./mvnw package
-
+      run: ./mvnw spring-boot:build-image
 
   PUSH:
     runs-on: ubuntu-latest 
