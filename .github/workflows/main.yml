@@ -1,7 +1,8 @@
-name: Maven Package
-
+name: CI
 on:
-  [push]
+  push:
+    branches: [ homolog ]
+  workflow_dispatch:
 
 jobs:
   build:
