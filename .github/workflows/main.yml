@@ -70,7 +70,7 @@ jobs:
         username: ${{secrets.DOCKERHUB_USER}}
         password: ${{secrets.DOCKERHUB_PWD}}
 
-    - name: Docker push
+    - name: Docker push hub
       run: |
         docker push tallesalencar/petclinic:${{needs.build.outputs.jar_version}}
   run:
