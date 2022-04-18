@@ -17,11 +17,12 @@ jobs:
     - name: ls
       run: sudo ls
     - name: Build with Maven
-      run: RUNNER_TRACKING_ID="" && mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml
     - name: ls2
       run: sudo ls
     - name: ls2
       run: sudo ls target
+
 
     - uses: actions/checkout@v2
 
@@ -30,18 +31,28 @@ jobs:
       with:
         username: ${{secrets.DOCKERHUB_USER}}
         password: ${{secrets.DOCKERHUB_PWD}}
-              
+    - name: ls2
+      run: sudo ls
+    - name: build
+      run: docker build -t tallesalencar/petclinic:${{github.run_number}} .
+    - name: tag
+      run: docker tag tallesalencar/petclinic:${{github.run_number}} tallesalencar/petclinic:latest
+    - name: push
+      run: docker push tallesalencar/petclinic:${{github.run_number}}
+    - name: push
+      run: docker push tallesalencar/petclinic:latest
+                
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v2.4.0
+#      - name: Build and push Docker image
+#        uses: docker/build-push-action@v2.4.0
 
-      with:
-        context: .
-        file: Dockerfile
-        push: true
-        tags: |
-          tallesalencar/petclinic:latest
-          tallesalencar/petclinic:${{github.run_number}}
+#        with:
+#          context: .
+#          file: Dockerfile
+#          push: true
+#          tags: |
+#            tallesalencar/petclinic:latest
+#            tallesalencar/petclinic:${{github.run_number}}
 
 
         
