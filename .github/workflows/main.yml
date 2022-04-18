@@ -17,7 +17,7 @@ jobs:
     - name: ls
       run: sudo ls
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: RUNNER_TRACKING_ID="" && mvn -B package --file pom.xml
     - name: ls2
       run: sudo ls
     - name: ls2
