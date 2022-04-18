@@ -25,13 +25,13 @@ jobs:
 
 
     - name: Build a package
-      run: mvn -B package --file my-app/pom.xml
+      run: mvn -B package --file pom.xml
 
     - name: Temporarily save jar artifact
       uses: actions/upload-artifact@v2
       with:
         name: jar-artifact
-        path: ${{ github.workspace }}/my-app/target/*.jar
+        path: ${{ github.workspace }}/target/*.jar
         retention-days: 1
 
   deploy:
