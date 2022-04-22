@@ -63,7 +63,7 @@ jobs:
     - uses: actions/download-artifact@v1
       with:
           name: jar-artifact
-          path: target/
+          path: my-app/target/
     - name: Docker build
       run: |
         docker build . -t tallesalencar/petclinic:${{needs.build.outputs.jar_version}}
