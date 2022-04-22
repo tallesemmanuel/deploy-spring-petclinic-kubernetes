@@ -81,6 +81,6 @@ jobs:
     needs: [build, deploy]
 
     steps:
-    - name: Run container
+    - name: Run container .
       run: |
         docker container run -d -p 8080:8080 tallesalencar/petclinic:${{needs.build.outputs.jar_version}}
