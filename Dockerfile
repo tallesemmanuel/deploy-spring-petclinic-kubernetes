@@ -1,4 +1,3 @@
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-COPY spring-petclinic/target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+FROM anapsix/alpine-java
+ADD my-app/target/*.jar /home/myjar.jar
+CMD ["java","-jar","/home/myjar.jar"]
