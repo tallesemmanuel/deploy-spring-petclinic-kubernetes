@@ -15,7 +15,7 @@ spec:
     spec:  
       containers:
       - name: spring-petclinic
-        image: tallesalencar/spring-petclinic:latest
+        image: tallesalencar/petclinic:latest
         ports:
         - containerPort: 8080
 ---
