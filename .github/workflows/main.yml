@@ -64,23 +64,54 @@ jobs:
       with:
           name: jar-artifact
           path: my-app/target/
-    - name: Docker build
-      run: |
-        docker build . -t tallesalencar/petclinic:${{needs.build.outputs.jar_version}}
+
     - name: Login to DockerHub
       uses: docker/login-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USER }}
         password: ${{ secrets.DOCKERHUB_PWD }}
+  
+    - name: Docker build
+      run: |
+        docker build . -t tallesalencar/petclinic:${{needs.build.outputs.jar_version}}
+
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v2.4.0
+      with:
+        context: .
+        file: Dockerfile
+        push: true
+        tags: |
+          tallesalencar/rotten-potatoes:latest
+          tallesalencar/rotten-potatoes:${{needs.build.outputs.jar_version}}
+
+
 
     - name: Docker push
       run: |
         docker push tallesalencar/petclinic:${{needs.build.outputs.jar_version}}
+        docker push tallesalencar/petclinic:latest
   run:
-    runs-on: self-hosted
+    runs-on: ubuntu-18.04
     needs: [build, deploy]
 
+#    steps:
+#    - name: Run container .
+#      run: |
+#        docker container run -d -p 8080:8080 tallesalencar/petclinic:latest
+
     steps:
-    - name: Run container .
-      run: |
-        docker container run -d -p 8080:8080 tallesalencar/petclinic:${{needs.build.outputs.jar_version}}
+      - uses: actions/checkout@v2
+  
+      - name: Kubernetes set context.
+        uses: Azure/k8s-set-context@v2
+        with:
+          method: kubeconfig
+          kubeconfig: ${{secrets.K8S_CONFIG}}
+          
+      - name: Deploy Aplicação Digital Ocean
+        uses: Azure/k8s-deploy@v3.0
+        with:
+          images: tallesalencar/petclinic:latest
+          manifests: |
+            k8s/deployment.yaml
