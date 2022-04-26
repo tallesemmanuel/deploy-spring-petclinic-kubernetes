@@ -16,7 +16,7 @@ provider "digitalocean" {
   token = var.do_token
 }
 
-resource "digitalocean_kubernetes_cluster" "k8s" {
+resource "digitalocean_kubernetes_cluster" "kubernetes" {
   name   = var.nome_cluster
   region = "nyc1"
   version = "1.22.8-do.1"
@@ -25,6 +25,7 @@ resource "digitalocean_kubernetes_cluster" "k8s" {
     name       = "default"
     size       = "s-2vcpu-2gb"
     node_count = 3
+    tags       = ["homolog"]
 
   }
 
