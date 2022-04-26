@@ -1,0 +1,2 @@
+do_token="dop_v1_f11783a7e25fc399b9032d1bac8fbb2271ff7bea4d1afb525e5a75cda5a73254"
+nome_cluster="k8s-cluster"

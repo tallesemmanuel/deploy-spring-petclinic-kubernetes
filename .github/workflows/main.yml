@@ -91,15 +91,19 @@ jobs:
       run: |
         docker push tallesalencar/petclinic:${{needs.build.outputs.jar_version}}
         docker push tallesalencar/petclinic:latest
+  terraform:
+    runs-on: ubuntu-18.04
+    needs: [build, deploy]
+    steps:
+      - uses: actions/checkout@v2
+      - name: terrafor init
+        run: |
+          cd terraform
+          terraform init
+          terraform apply -auto-approve
   run:
     runs-on: ubuntu-18.04
     needs: [build, deploy]
-
-#    steps:
-#    - name: Run container .
-#      run: |
-#        docker container run -d -p 8080:8080 tallesalencar/petclinic:latest
-
     steps:
       - uses: actions/checkout@v2
   
