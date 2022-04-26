@@ -93,7 +93,6 @@ jobs:
         docker push tallesalencar/petclinic:latest
   terraform:
     runs-on: ubuntu-18.04
-    needs: [build, deploy]
     steps:
       - uses: actions/checkout@v2
       - name: terrafor init
@@ -103,7 +102,7 @@ jobs:
           terraform apply -auto-approve
   run:
     runs-on: ubuntu-18.04
-    needs: [build, deploy]
+    needs: [build, deploy, terraform]
     steps:
       - uses: actions/checkout@v2
   
