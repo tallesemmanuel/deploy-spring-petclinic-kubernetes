@@ -84,6 +84,9 @@ jobs:
         run: |
           cd terraform
           terraform init
+          touch terraform.tfvars
+          echo do_token=${{secrets.do_token}} >> terraform.tfvars
+          echo k8s-k8s-1-22-8-do-1-sfo3-1652124913682 >> terraform.tfvars
           terraform apply -auto-approve
   run:
     runs-on: ubuntu-18.04
