@@ -23,7 +23,7 @@ resource "digitalocean_kubernetes_cluster" "kubernetes" {
 
   node_pool {
     name       = "default"
-    size       = "s-2vcpu-2gb"
+    size       = "s-2vcpu-4gb"
     node_count = 3
     tags       = ["homolog"]
 

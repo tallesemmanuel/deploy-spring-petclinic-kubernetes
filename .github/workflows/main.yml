@@ -1,12 +1,7 @@
 name: Maven Package
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ homolog ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
   build:
@@ -40,10 +35,6 @@ jobs:
         echo "pom.xml at" $POMPATH "will be bumped from" $OLD_VERSION "to" $NEW_VERSION
         mvn -q versions:set -DnewVersion="${NEW_VERSION}" --file $POMPATH/pom.xml
         echo ::set-output name=jar_version::${NEW_VERSION}
-
-#    - name: Compile
-#      run: mvn -B compile --file my-app/pom.xml
-
     - name: Build a package
       run: mvn -B package --file my-app/pom.xml
 
@@ -71,10 +62,6 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USER }}
         password: ${{ secrets.DOCKERHUB_PWD }}
   
-#    - name: Docker build
-#      run: |
-#        docker build . -t tallesalencar/petclinic:${{needs.build.outputs.jar_version}}
-
     - name: Build and push Docker images
       uses: docker/build-push-action@v2.4.0
       with:
@@ -84,8 +71,6 @@ jobs:
         tags: |
           tallesalencar/petclinic:latest
           tallesalencar/petclinic:${{needs.build.outputs.jar_version}}
-
-
 
     - name: Docker push
       run: |
