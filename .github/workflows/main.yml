@@ -83,10 +83,10 @@ jobs:
       - name: terrafor init
         run: |
           cd terraform
-          terraform init
           touch terraform.tfvars
           echo do_token="${{secrets.DO_TOKEN}}" >> terraform.tfvars
           echo nome_cluster="${{secrets.NOME_CLUSTER}}" >> terraform.tfvars
+          terraform init
           terraform apply -auto-approve
   run:
     runs-on: ubuntu-18.04
