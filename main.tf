@@ -2,12 +2,14 @@ terraform {
   required_providers {
     digitalocean = {
       source = "digitalocean/digitalocean"
-      version = "~> 2.0"
+      version = "1.22.2"
     }
   }
 }
 
 variable "do_token" {}
+variable "nome_cluster" {}
+
 
 # Configure the DigitalOcean Provider
 provider "digitalocean" {
@@ -15,7 +17,7 @@ provider "digitalocean" {
 }
 
 resource "digitalocean_kubernetes_cluster" "kubernetes" {
-  name   = "k8s"
+  name   = var.nome_cluster
   region = "nyc1"
   version = "1.22.8-do.1"
 
