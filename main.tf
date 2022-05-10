@@ -7,17 +7,13 @@ terraform {
   }
 }
 
-variable "do_token" {}
-variable "nome_cluster" {}
-
-
 # Configure the DigitalOcean Provider
 provider "digitalocean" {
-  token = var.do_token
+  token = "dop_v1_bf9a2173c362a586593effe35eb6dcad0c991a301eacb01da473ce2597c476cd"
 }
 
 resource "digitalocean_kubernetes_cluster" "kubernetes" {
-  name   = var.nome_cluster
+  name   = "k8s"
   region = "nyc1"
   version = "1.22.8-do.1"
 
