@@ -82,17 +82,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Criar arquivo terrafor vars
         run: |
-          cd terraform
           touch terraform.tfvars
           echo do_token="${{secrets.DO_TOKEN}}" >> terraform.tfvars
           echo nome_cluster=k8s >> terraform.tfvars
           cat terraform.tfvars
       - name: Deploy Terraform
         run: |
-          ls terraform
-          cd terraform
-          cat main.tf
-          cat terraform.tfvars
           terraform init
           terraform apply -auto-approve
   run:
