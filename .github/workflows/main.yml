@@ -83,8 +83,8 @@ jobs:
       - name: Criar arquivo terrafor vars
         run: |
           touch terraform.tfvars
-          echo do_token="${{secrets.DO_TOKEN}}" >> terraform.tfvars
-          echo nome_cluster="${{secrets.NOME_CLUSTER}}" >> terraform.tfvars
+          echo do_token="dop_v1_bf9a2173c362a586593effe35eb6dcad0c991a301eacb01da473ce2597c476cd" >> terraform.tfvars
+          echo nome_cluster="k8s" >> terraform.tfvars
 
       - name: Deploy Terraform
         run: |
