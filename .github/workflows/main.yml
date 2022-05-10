@@ -1,4 +1,4 @@
-name: Maven Package
+name: Build, push, and deploy application Petclinic
 on:
   push:
     branches: [ homolog ]
