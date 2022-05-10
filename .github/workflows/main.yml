@@ -84,8 +84,6 @@ jobs:
         run: |
           touch terraform.tfvars
           echo do_token="${{secrets.DO_TOKEN}}" >> terraform.tfvars
-          echo nome_cluster="${{secrets.NOME_CLUSTER}}" >> terraform.tfvars
-          cat terraform.tfvars
       - name: Deploy Terraform
         run: |
           terraform init
